@@ -212,6 +212,11 @@ img {
   display: block;
   font-weight: 700;
 }
+
+.left{
+  flex-grow: 1;
+}
+
 .header {
   /* max-width: 1340px;
   width: 100%;
