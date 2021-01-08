@@ -6,11 +6,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet"> -->
   <link rel="stylesheet" href="/css/styles.css">
   <title>Document</title>
 </head>
 
 <body>
+  <div class="container">
+    <main class="main">
+      <div class="sidebar">
+        <div class="sidebar__bottom">
+          <h2 class="sidebar__title">Bookmarked Pokemons</h2>
+          <ul class="sidebar__list bookmarked-pokemons">
+            <li class="bookmarked-pokemons__item">
+              <button class="bookmarked-pokemons__item-remove" type="button" aria-label="remove button">
+                <img class="bookmarked-pokemons__item-remove-img" src="/img/arrow-left-solid.svg"
+                  alt="remove button img" width="20" height="20">
+              </button>
+              <a href="#" class="bookmarked-pokemons__link bookmarked-pokemon">
+                <img class="bookmarked-pokemon__img" src="/img/025.png" alt="Pikachu img" width="86" height="72">
+                <div class="bookmarked-pokemon__details">
+                  <h3 class="bookmarked-pokemon__title">Pickachu</h3>
+                  <div class="bookmarked-pokemon__features-wrapper">
+                    <!-- <p class="bookmarked-pokemon__features-wrapper-title">Features</p> -->
+                    <ul class="bookmarked-pokemon__features">
+                      <li class="bookmarked-pokemon__feature">FIRE</li>
+                      <li class="bookmarked-pokemon__feature">POISON</li>
+                    </ul>
+                  </div>
+                  <div class="bookmarked-pokemon__sizes">
+                    <div class="bookmarked-pokemon__height-wrapper">
+                      <img class="bookmarked-pokemon__height-img" src="/img/resize.svg" alt="ruler logo" width="24"
+                        height="20">
+                      <span class="bookmarked-pokemon__height">1.7m</span>
+                    </div>
+                    <div class="bookmarked-pokemon__weight-wrapper">
+                      <img class="bookmarked-pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24"
+                        height="20">
+                      <span class="bookmarked-pokemon__weight">2kg</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="bookmarked-pokemons__item">
+              <button class="bookmarked-pokemons__item-remove" type="button" aria-label="remove button">
+                <img class="bookmarked-pokemons__item-remove-img" src="/img/arrow-left-solid.svg"
+                  alt="remove button img" width="20" height="20">
+              </button>
+              <a href="#" class="bookmarked-pokemons__link bookmarked-pokemon">
+                <img class="bookmarked-pokemon__img" src="/img/025.png" alt="Pikachu img" width="86" height="72">
+                <div class="bookmarked-pokemon__details">
+                  <h3 class="bookmarked-pokemon__title">Pickachu</h3>
+                  <div class="bookmarked-pokemon__features-wrapper">
+                    <!-- <p class="bookmarked-pokemon__features-wrapper-title">Features</p> -->
+                    <ul class="bookmarked-pokemon__features">
+                      <li class="bookmarked-pokemon__feature">FIRE</li>
+                      <li class="bookmarked-pokemon__feature">POISON</li>
+                    </ul>
+                  </div>
+                  <div class="bookmarked-pokemon__sizes">
+                    <div class="bookmarked-pokemon__height-wrapper">
+                      <img class="bookmarked-pokemon__height-img" src="/img/resize.svg" alt="ruler logo" width="24"
+                        height="20">
+                      <span class="bookmarked-pokemon__height">1.7m</span>
+                    </div>
+                    <div class="bookmarked-pokemon__weight-wrapper">
+                      <img class="bookmarked-pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24"
+                        height="20">
+                      <span class="bookmarked-pokemon__weight">2kg</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="bookmarked-pokemons__item">
+              <button class="bookmarked-pokemons__item-remove" type="button" aria-label="remove button">
+                <img class="bookmarked-pokemons__item-remove-img" src="/img/arrow-left-solid.svg"
+                  alt="remove button img" width="20" height="20">
+              </button>
+              <a href="#" class="bookmarked-pokemons__link bookmarked-pokemon">
+                <img class="bookmarked-pokemon__img" src="/img/025.png" alt="Pikachu img" width="86" height="72">
+                <div class="bookmarked-pokemon__details">
+                  <h3 class="bookmarked-pokemon__title">Pickachu</h3>
+                  <div class="bookmarked-pokemon__features-wrapper">
+                    <!-- <p class="bookmarked-pokemon__features-wrapper-title">Features</p> -->
+                    <ul class="bookmarked-pokemon__features">
+                      <li class="bookmarked-pokemon__feature">FIRE</li>
+                      <li class="bookmarked-pokemon__feature">POISON</li>
+                    </ul>
+                  </div>
+                  <div class="bookmarked-pokemon__sizes">
+                    <div class="bookmarked-pokemon__height-wrapper">
+                      <img class="bookmarked-pokemon__height-img" src="/img/resize.svg" alt="ruler logo" width="24"
+                        height="20">
+                      <span class="bookmarked-pokemon__height">1.7m</span>
+                    </div>
+                    <div class="bookmarked-pokemon__weight-wrapper">
+                      <img class="bookmarked-pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24"
+                        height="20">
+                      <span class="bookmarked-pokemon__weight">2kg</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <header class="header">
+        <nav class="nav">
+          <a class="logo" href="/">
+            <img class="logo__img" src="/img/logo.svg" alt="Pokemon logo" width="140" height="80">
+          </a>
+          <ul class="nav__list">
+            <li class="nav__item nav__item--active ">
+              <a class="nav__link" href="#">Home page</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#">Connect us</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </main>
+  </div>
   <script src="/js/pokemons.js"></script>
   <script src="/js/app.js"></script>
 </body>
