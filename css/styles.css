@@ -52,7 +52,8 @@ img {
   padding-bottom: 20px;
   padding-right: 20px;
   padding-left: 20px;
-  width: 25%;
+  max-width: 25%;
+  width: 100%;
   background-color: rgb(252, 252, 252);
   border-right: 2px solid #ddd;
   box-shadow: 10px 0px 10px #ddd;
@@ -134,10 +135,16 @@ img {
   align-items: center;
   text-decoration: none;
   background-color: #fff;
-  box-shadow: 0px 0px 10px #ddd;
+  box-shadow: 0px 2px 10px rgb(218, 218, 218);
   color: #000;
   border-radius: 5px;
   padding: 6px;
+  transition: transform 0.2s ease,box-shadow 0.2s ease;
+  border: 2px solid transparent;
+}
+.bookmarked-pokemon:hover{
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 10px rgb(212, 212, 212);
 }
 .bookmarked-pokemon__img {
   display: block;
@@ -262,6 +269,136 @@ img {
   display: block;
 }
 
+.search {
+  padding: 20px;
+}
+.search__container {
+}
+.search__form {
+  display: flex;
+  justify-content: center;
+}
+.search__input{
+  outline: none;
+  padding: 10px 14px;
+  max-width: 640px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  /* border-right:   none; */
+  box-shadow: 0px 0px 10px #ddd;
+  font-family: "Poppins",sans-serif;
+  font-size: 18px;
+  color: #222;
+  font-weight: 500;
+}
+
+.search__input::placeholder{
+  font-family: "Poppins",sans-serif;
+}
+.search__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  max-width: 80px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  /* border-left:   none; */
+  box-shadow: 0px 0px 10px #ddd;
+  cursor: pointer;
+}
+.search__button-img {
+  display: block;
+  object-fit: contain;
+}
+
+
+/* categories */
+.categories{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.categoires__container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.categories__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style-type: none;
+
+}
+.categories__item {
+  /* transform: rotate(90deg); */
+  margin:4px 6px;
+}
+.categories__link {
+  display: block;
+  padding: 4px 8px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #222;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px #ddd;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.categories__link--active {
+}
+.calor--normal {
+}
+.calor--fighting {
+}
+.calor--flying {
+}
+.calor--poison {
+}
+.calor--ground {
+}
+.calor--rock {
+}
+.calor--bug {
+}
+.calor--ghost {
+}
+.calor--steel {
+}
+.calor--fire {
+}
+.calor--water {
+}
+.calor--grass {
+}
+.calor--electric {
+}
+.calor--psychic {
+}
+.calor--ice {
+}
+.calor--dragon {
+}
+.calor--dark {
+}
+.calor--fairy {
+}
+
+
+
+
+
+
+/* animations */
 
 @keyframes bookmark-item{
   from {
@@ -271,7 +408,6 @@ img {
   to {
     opacity: 1;
     transform: none;
-    background-color: yellow;
   }
 
 }
