@@ -133,13 +133,13 @@
 
         <section class="search">
           <div class="search__container">
-            <form action="#" class="search__form">
-              <input class="search__input" type="text" name="search" id="search-input" placeholder="Search for pokemons"
-                autocomplete="off">
+            <form action="#" class="search__form js-search__form">
+              <input class="search__input js-search__input" type="text" name="search" id="search-input"
+                placeholder="Search for pokemons" autocomplete="off">
               <!-- <select class="search__categories-select" name="search-category">
                 <option class="search__categories-option" value="binnima">POSITION</option>
               </select> -->
-              <button class="search__button" type="submit">
+              <button class="search__button " type="submit">
                 <img class="search__button-img" src="/img/search.svg" alt="Search img" width="24" height="24">
               </button>
             </form>
@@ -210,53 +210,9 @@
         </section>
         <section class="result">
           <div class="result__container">
-            <h3 class="result__title">Search result: <span class="result__title-count">12</span></h3>
-            <ul class="pokemons">
-              <li class="pokemons__item pokemon">
-                <a href="#" class="pokemon__link">
-                  <img class="pokemon__img" src="/img/025.png" alt="Pikachu img" width="200" height="180">
-                  <div class="pokemon__info">
-                    <h4 class="pokemon__name">Pikachu</h4>
-                    <ul class="pokemon__features">
-                      <li class="pokemon__feature">FIRE</li>
-                      <li class="pokemon__feature">POISON</li>
-                    </ul>
-                    <div class="pokemon__sizes">
-                      <div class="pokemon__height-wrapper">
-                        <img class="pokemon__height-img" src="/img/resize.svg" alt="ruler logo" width="24" height="20">
-                        <span class="pokemon__height">1.7m</span>
-                      </div>
-                      <div class="pokemon__weight-wrapper">
-                        <img class="pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24" height="20">
-                        <span class="pokemon__weight">2kg</span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="pokemons__item pokemon">
-                <a href="#" class="pokemon__link">
-                  <img class="pokemon__img" src="/img/025.png" alt="Pikachu img" width="200" height="180">
-                  <div class="pokemon__info">
-                    <h4 class="pokemon__name">Pikachu</h4>
-                    <ul class="pokemon__features">
-                      <li class="pokemon__feature">FIRE</li>
-                      <li class="pokemon__feature">POISON</li>
-                    </ul>
-                    <div class="pokemon__sizes">
-                      <div class="pokemon__height-wrapper">
-                        <img class="pokemon__height-img" src="/img/resize.svg" alt="ruler logo" width="24" height="20">
-                        <span class="pokemon__height">1.7m</span>
-                      </div>
-                      <div class="pokemon__weight-wrapper">
-                        <img class="pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24" height="20">
-                        <span class="pokemon__weight">2kg</span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <h3 class="result__title">Search result: <span class="result__title-count js-result__title-count"></span>
+            </h3>
+            <ul class="pokemons js-pokemons-result-list"></ul>
           </div>
         </section>
       </div>
@@ -281,7 +237,33 @@
       </ul>
     </div>
   </div> -->
+  <template class="js-pokemon-template">
+    <li class="pokemons__item pokemon ">
+      <!-- <button class="pokemon__bookmark js-pokemon__bookmark" type="button" aria-label="Bookmark button"></button> -->
+      <a href="#" class="pokemon__link js-pokemon__link">
+        <img class="pokemon__img js-pokemon__img" src="/img/025.png" alt="Pikachu img" width="200" height="180">
+        <div class="pokemon__info">
+          <h4 class="pokemon__name js-pokemon__name">Pikachu</h4>
+          <ul class="pokemon__features js-pokemon__features">
+            <li class="pokemon__feature">FIRE</li>
+            <li class="pokemon__feature">POISON</li>
+          </ul>
+          <div class="pokemon__sizes">
+            <div class="pokemon__height-wrapper">
+              <img class="pokemon__height-img" src="/img/resize.svg" alt="ruler logo" width="24" height="20">
+              <span class="pokemon__height js-pokemon__height">1.7m</span>
+            </div>
+            <div class="pokemon__weight-wrapper">
+              <img class="pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24" height="20">
+              <span class="pokemon__weight js-pokemon__weight">2kg</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+  </template>
   <script src="/js/pokemons.js"></script>
+  <script src="/js/utils.js"></script>
   <script src="/js/app.js"></script>
 </body>
 
