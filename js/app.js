@@ -22,7 +22,13 @@ let elPokemonTemplate = $_(".js-pokemon-template").content;
 // Search form elements
 let elForm = $_(".js-search__form");
 let elFormInput = $_(".js-search__input");
+//Categories
 
+let elCategoriesList = $_(".categories__list")
+let elCategoriesItems = $$_(".categories__item")
+
+let searchedCategory;
+let bookmarkPokemons = [];
 let createCardPokemon = (pokemon) => {
   let elPokemonTemplateClone = elPokemonTemplate.cloneNode(true);
   let elFeatures = $_(".js-pokemon__features", elPokemonTemplateClone);
@@ -39,8 +45,13 @@ let createCardPokemon = (pokemon) => {
   return elPokemonTemplateClone;
 };
 
+let countOfResult = (pokemonArray) => {
+  elSearchResultCount.textContent = pokemonArray.length === 0 ? "Topilmadi 🙁" : `${pokemonArray.length} ta`
+}
+
 let displayPokemonCards = (elList, arrayPokemons) => {
   elList.innerHTML = ""
+  countOfResult(arrayPokemons)
   let elPokemonsFragment = document.createDocumentFragment();
   arrayPokemons.forEach((pokemon) => {
     elPokemonsFragment.appendChild(createCardPokemon(pokemon));
@@ -49,31 +60,43 @@ let displayPokemonCards = (elList, arrayPokemons) => {
   elList.appendChild(elPokemonsFragment);
 };
 
-let searchPokemons = (text, pokemonsArray) => {
+let searchPokemons = (text, pokemonsArray, category = "all") => {
   let textRegex = new RegExp(text, "gi");
-  // || pokemon.type.includes(text)
-  return pokemonsArray.filter((pokemon) => pokemon.name.match(textRegex));
+  return pokemonsArray.filter((pokemon) => {
+    let matchCategory = category === "all" || pokemon.type.includes(category);
+    return pokemon.name.match(textRegex) && matchCategory
+  });
 };
-
-// displayPokemonCards(elSearchResult, pokemons.slice(0, 10))
-
 
 // Event listeners
 
 elForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  let inpurValue = elFormInput.value;
-  console.log(pokemons);
-  let searchedPokemons = searchPokemons(inpurValue, pokemons);
-  displayPokemonCards(elSearchResult, searchedPokemons);
+  let inputValue = elFormInput.value;
+  displayPokemonCards(elSearchResult, searchPokemons(inputValue, pokemons, searchedCategory));
 });
 
 elFormInput.addEventListener("input", (evt) => {
-  let inpurValue = evt.target.value;
-  if (inpurValue) {
-    let searchedPokemons = searchPokemons(inpurValue, pokemons);
-    displayPokemonCards(elSearchResult, searchedPokemons);
-  } else {
-    elSearchResult.innerHTML = ""
-  }
+  let inputValue = evt.target.value;
+
+  displayPokemonCards(elSearchResult, searchPokemons(inputValue, pokemons, searchedCategory));
+
 });
+
+elCategoriesList.addEventListener("click", (evt) => {
+  evt.preventDefault()
+  if (evt.target.matches(".categories__link")) {
+    let inputValue = elFormInput.value;
+
+    searchedCategory = evt.target.dataset.type;
+
+    elCategoriesItems.forEach((a) => {
+      a.setAttribute("class", "categories__item")
+    })
+
+    evt.target.parentNode.setAttribute("class", "categories__item categories__item--active");
+    console.log(searchPokemons(inputValue, pokemons, searchedCategory));
+    console.log(inputValue);
+    displayPokemonCards(elSearchResult, searchPokemons(inputValue, pokemons, searchedCategory));
+  }
+})
