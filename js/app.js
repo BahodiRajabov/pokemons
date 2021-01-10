@@ -1,3 +1,10 @@
+// document.body.style.marginLeft =
+//   document.querySelector(".sidebar").offsetWidth + "px";
+
+// // set megin top on tablet and mobile mode
+// document.body.style.marginTop =
+//   document.querySelector(".header").offsetHeight + "px";
+
 //Pokemon classes from DOM
 let elSearchResult = $_(".js-pokemons-result-list");
 let elSearchResultCount = $_(".js-result__title-count");
@@ -61,7 +68,7 @@ elForm.addEventListener("submit", (evt) => {
   displayPokemonCards(elSearchResult, searchedPokemons);
 });
 
-elFormInput.addEventListener("keyup", (evt) => {
+elFormInput.addEventListener("input", (evt) => {
   let inpurValue = evt.target.value;
   if (inpurValue) {
     let searchedPokemons = searchPokemons(inpurValue, pokemons);

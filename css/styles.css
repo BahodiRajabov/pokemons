@@ -43,22 +43,25 @@ img {
   margin-right: auto;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
 ::-webkit-scrollbar-track {
-  background: #fff;
-  border-radius: 5px;
+  background: #f1f1f1;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #191d3f;
-  border-radius: 5px;
+  background: rgb(88, 88, 88);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgb(44, 44, 44);
 }
-
 
 .main{
   display: flex;
@@ -459,10 +462,36 @@ img {
 .pokemons__item:hover .pokemon__img{
   transform: translateY(-10px);
   /* transform: translateY(-50%); */
-
+}
+.pokemons__item:hover .pokemon__bookmark{
+  display: block;
 }
 .pokemon {
 }
+.pokemon__bookmark{
+  outline: none;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 10;
+  display: none;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  transition: transform 0.2s ease;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-image: url("/img/bookmark-simple.svg");
+  background-position: center center;
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-color: #ddd;
+}
+.pokemon__bookmark:hover{
+}
+
 .pokemon__link {
   display: block;
   text-decoration: none;
