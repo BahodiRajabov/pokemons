@@ -1,7 +1,5 @@
 
 
-document.body.style.marginLeft =
-  document.querySelector(".sidebar").offsetWidth + "px";
 
 // // set megin top on tablet and mobile mode
 // document.body.style.marginTop =
@@ -16,6 +14,7 @@ let elPokemonTemplate = $_(".js-pokemon-template").content;
 let elBookmarkedPokemonsCount = $_(".js-bookmark-count")
 let elBookmakredPokemonsList = $_(".js-bookmarked-pokemons")
 let elBookmarkPokemonTemplate = $_(".js-bookmark-template").content;
+let elToggler = $_(".js-toggler")
 
 // let elPokemonBookmarkButton = $_(".js-pokemon__bookmark");
 // let elPokemonLink = $_(".js-pokemon__link");
@@ -32,7 +31,7 @@ let elFormInput = $_(".js-search__input");
 
 let elCategoriesList = $_(".categories__list")
 let elCategoriesItems = $$_(".categories__item")
-
+// let elCategoryTemplate = $_(".js-category-template")
 let searchedCategory;
 
 let bookmarkPokemonsLocalStorage = JSON.parse(localStorage.getItem("bookmarkPokemons"));
@@ -150,6 +149,21 @@ let searchPokemons = (text, pokemonsArray, category = "all") => {
   });
 };
 
+// toggler
+
+let openSidebar = () => {
+  if (bookmarkPokemons.length > 0) {
+    document.body.classList.remove("body--sidebar-close")
+  } else {
+    document.body.classList.add("body--sidebar-close")
+  }
+}
+
+elToggler.addEventListener("click", (evt) => {
+  evt.preventDefault()
+  document.body.classList.toggle("body--sidebar-close")
+})
+
 // Event listeners
 
 elForm.addEventListener("submit", (evt) => {
@@ -189,6 +203,7 @@ elSearchResultList.addEventListener("click", (evt) => {
   if (evt.target.matches(".js-pokemon__bookmark")) {
     toggleMarkPokemon(pokemons, evt.target, "pokemon__bookmark--active")
     displayBookmarkPokemonCards(elBookmakredPokemonsList, bookmarkPokemons)
+    openSidebar()
   }
 })
 
@@ -199,5 +214,6 @@ elBookmakredPokemonsList.addEventListener("click", (evt) => {
     toggleMarkPokemon(pokemons, evt.target, "bookmarked-pokemons__item-remove--active")
     displayBookmarkPokemonCards(elBookmakredPokemonsList, bookmarkPokemons)
     displayPokemonCards(elSearchResultList, globalSearchedPokemons)
+    openSidebar()
   }
 })

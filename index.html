@@ -11,9 +11,9 @@
   <title>Document</title>
 </head>
 
-<body>
-  <main class="main">
-    <div class="sidebar">
+<body class="body--sidebar-close">
+  <main class="main ">
+    <div class="sidebar sidebar--empty">
       <div class="sidebar__bottom">
         <h2 class="sidebar__title">Bookmarked Pokemons <span class="result__title-count js-bookmark-count"></span>
         </h2>
@@ -22,6 +22,7 @@
       </div>
     </div>
     <div class="left">
+      <button class="toggler js-toggler" type="button" aria-label="bookmark menu button"></button>
       <header class="header">
         <nav class="nav">
           <a class="logo" href="/">
@@ -199,6 +200,11 @@
           </div>
         </div>
       </a>
+    </li>
+  </template>
+  <template class="js-category-template">
+    <li class="categories__item">
+      <a class="categories__link calor--fairy" data-type="fairy" href="#">Fairy</a>
     </li>
   </template>
   <script src="/js/pokemons.js"></script>

@@ -17,8 +17,11 @@ body {
   line-height: 1.5;
   background-color: #fff;
   color: #222;
+  margin-left: 460px;
 }
-
+.body--sidebar-close{
+  margin-left: 0;
+}
 img {
   max-width: 100%;
   height: auto;
@@ -75,11 +78,14 @@ img {
   padding-bottom: 20px;
   padding-right: 40px;
   padding-left: 40px;
-  width: 30%;
+  max-width: 30%;
+  width: 100%;
   background-color: rgb(252, 252, 252);
   border-right: 2px solid #ddd;
-  /* box-shadow:inset 0px -10px 40px rgba(0, 0, 0,0.6); */
   overflow-y: auto;
+}
+.body--sidebar-close .sidebar{
+  display: none;
 }
 .sidebar--empty{
   background-image: url("/img/undraw_No_data_re_kwbl\ \(1\).svg");
@@ -87,14 +93,45 @@ img {
   background-repeat: no-repeat;
   background-size: 360px 240px;
 }
+.toggler{
+  display: block;
+  padding: 0;
+  padding-left: 4px;
+  border: none;
+  background-color:rgb(2, 141, 255);
+  width: 30px;
+  height: 28px;
+  border-radius: 50%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  position: fixed;
+  left: 424px;
+  top: 20px;
+  z-index: 10;
+  cursor: pointer;
+  background-image: url("/img/arrow-left-solid.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  transition: width 0.3s ease;
+}
+.toggler:hover{
+  background-color:rgb(0, 110, 201);
+}
+.body--sidebar-close .toggler{
+  border-radius: 50%;
+  background-image: url("/img/arrow-right-solid.svg");
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  left: 0px;
+}
+
 .sidebar__title{
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 22px;
 }
 
-.sidebar__bottom {
-}
 .sidebar__list {
   display: flex;
   flex-direction: column;
@@ -102,8 +139,6 @@ img {
   margin-bottom: 0;
   padding-left: 0;
   list-style-type: none;
-}
-.bookmarked-pokemons {
 }
 .bookmarked-pokemons__item {
   position: relative;
@@ -120,13 +155,11 @@ img {
   display: inline-block;
 } */
 .bookmarked-pokemons__item-remove{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: block;
   padding: 0;
   padding-left: 4px;
   border: none;
-  background-color:rgb(2, 141, 255);
+  background-color:rgb(255, 10, 2);
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -137,7 +170,7 @@ img {
   right: 100%;
   transform: translateY(-50%);
   cursor: pointer;
-  background-image: url("/img/arrow-left-solid.svg");
+  background-image: url("/img/close.svg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 20px 20px;
