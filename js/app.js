@@ -1,15 +1,21 @@
-// document.body.style.marginLeft =
-//   document.querySelector(".sidebar").offsetWidth + "px";
+
+
+document.body.style.marginLeft =
+  document.querySelector(".sidebar").offsetWidth + "px";
 
 // // set megin top on tablet and mobile mode
 // document.body.style.marginTop =
 //   document.querySelector(".header").offsetHeight + "px";
 
 //Pokemon classes from DOM
-let elSearchResult = $_(".js-pokemons-result-list");
+let elSearchResultList = $_(".js-pokemons-result-list");
 let elSearchResultCount = $_(".js-result__title-count");
 let elPokemonTemplate = $_(".js-pokemon-template").content;
 
+// bookmarked DOM ELEMENTS
+let elBookmarkedPokemonsCount = $_(".js-bookmark-count")
+let elBookmakredPokemonsList = $_(".js-bookmarked-pokemons")
+let elBookmarkPokemonTemplate = $_(".js-bookmark-template").content;
 
 // let elPokemonBookmarkButton = $_(".js-pokemon__bookmark");
 // let elPokemonLink = $_(".js-pokemon__link");
@@ -28,7 +34,43 @@ let elCategoriesList = $_(".categories__list")
 let elCategoriesItems = $$_(".categories__item")
 
 let searchedCategory;
-let bookmarkPokemons = [];
+
+let bookmarkPokemonsLocalStorage = JSON.parse(localStorage.getItem("bookmarkPokemons"));
+let globalSearchedPokemons;
+let bookmarkPokemons = bookmarkPokemonsLocalStorage || [];
+
+
+let updateBookmarkCaunt = () => {
+  elBookmarkedPokemonsCount.textContent = bookmarkPokemons.length;
+};
+
+updateBookmarkCaunt()
+
+let addBookmarkPokemon = (pokemon) => {
+  bookmarkPokemons.push(pokemon)
+  localStorage.setItem("bookmarkPokemons", JSON.stringify(bookmarkPokemons));
+  updateBookmarkCaunt()
+}
+let removeBookmarkPokemon = (index) => {
+  bookmarkPokemons.splice(index, 1)
+  localStorage.setItem("bookmarkPokemons", JSON.stringify(bookmarkPokemons));
+  updateBookmarkCaunt()
+}
+let toggleMarkPokemon = (loopArray, bookmarkButton, className) => {
+  loopArray.forEach((pokemon) => {
+    if (pokemon.id == bookmarkButton.dataset.id) {
+      let searchedPokemonIndex = bookmarkPokemons.findIndex(bookmarkPokemon => bookmarkPokemon.id === pokemon.id);
+      console.log(searchedPokemonIndex);
+      if (searchedPokemonIndex === -1) {
+        addBookmarkPokemon(pokemon)
+        bookmarkButton.classList.add(className);
+      } else {
+        removeBookmarkPokemon(searchedPokemonIndex)
+        bookmarkButton.classList.remove(className);
+      }
+    }
+  });
+};
 let createCardPokemon = (pokemon) => {
   let elPokemonTemplateClone = elPokemonTemplate.cloneNode(true);
   let elFeatures = $_(".js-pokemon__features", elPokemonTemplateClone);
@@ -37,12 +79,37 @@ let createCardPokemon = (pokemon) => {
   $_(".js-pokemon__name", elPokemonTemplateClone).textContent = pokemon.name;
   $_(".js-pokemon__height", elPokemonTemplateClone).textContent = pokemon.height;
   $_(".js-pokemon__weight", elPokemonTemplateClone).textContent = pokemon.weight;
+  $_(".js-pokemon__bookmark", elPokemonTemplateClone).dataset.id = pokemon.id;
+
+  bookmarkPokemons.forEach((pokemonBookmark) => {
+    if (pokemonBookmark.id === pokemon.id) {
+      $_(".js-pokemon__bookmark", elPokemonTemplateClone).classList.add(
+        "pokemon__bookmark--active"
+      );
+    }
+  });
 
   pokemon.type.forEach((typePokemon) => {
     elFeatures.appendChild(createElement("li", "pokemon__feature", typePokemon))
   });
 
   return elPokemonTemplateClone;
+};
+let createBookmarkCardPokemon = (pokemon) => {
+  let elBookmarkPokemonTemplateClone = elBookmarkPokemonTemplate.cloneNode(true);
+  let elFeatures = $_(".js-bookmarked-pokemon__features", elBookmarkPokemonTemplateClone);
+
+  $_(".js-bookmarked-pokemon__img", elBookmarkPokemonTemplateClone).src = pokemon.img;
+  $_(".js-bookmarked-pokemon__title", elBookmarkPokemonTemplateClone).textContent = pokemon.name;
+  $_(".js-bookmarked-pokemon__height", elBookmarkPokemonTemplateClone).textContent = pokemon.height;
+  $_(".js-bookmarked-pokemon__weight", elBookmarkPokemonTemplateClone).dataset.id = pokemon.weight;
+  $_(".js-bookmarked-pokemons__item-remove", elBookmarkPokemonTemplateClone).dataset.id = pokemon.id;
+
+  pokemon.type.forEach((typePokemon) => {
+    elFeatures.appendChild(createElement("li", "pokemon__feature", typePokemon))
+  });
+
+  return elBookmarkPokemonTemplateClone;
 };
 
 let countOfResult = (pokemonArray) => {
@@ -56,9 +123,24 @@ let displayPokemonCards = (elList, arrayPokemons) => {
   arrayPokemons.forEach((pokemon) => {
     elPokemonsFragment.appendChild(createCardPokemon(pokemon));
   });
-
   elList.appendChild(elPokemonsFragment);
 };
+
+let displayBookmarkPokemonCards = (elList, arrayPokemons) => {
+  elList.innerHTML = ""
+  updateBookmarkCaunt(arrayPokemons)
+  let elPokemonsFragment = document.createDocumentFragment();
+  arrayPokemons.forEach((pokemon) => {
+    elPokemonsFragment.appendChild(createBookmarkCardPokemon(pokemon));
+  });
+  elList.appendChild(elPokemonsFragment);
+};
+
+
+// display bookmarked pokemons
+displayBookmarkPokemonCards(elBookmakredPokemonsList, bookmarkPokemons)
+
+
 
 let searchPokemons = (text, pokemonsArray, category = "all") => {
   let textRegex = new RegExp(text, "gi");
@@ -73,13 +155,13 @@ let searchPokemons = (text, pokemonsArray, category = "all") => {
 elForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   let inputValue = elFormInput.value;
-  displayPokemonCards(elSearchResult, searchPokemons(inputValue, pokemons, searchedCategory));
+  displayPokemonCards(elSearchResultList, searchPokemons(inputValue, pokemons, searchedCategory));
 });
 
 elFormInput.addEventListener("input", (evt) => {
   let inputValue = evt.target.value;
-
-  displayPokemonCards(elSearchResult, searchPokemons(inputValue, pokemons, searchedCategory));
+  globalSearchedPokemons = searchPokemons(inputValue, pokemons, searchedCategory);
+  displayPokemonCards(elSearchResultList, globalSearchedPokemons);
 
 });
 
@@ -95,8 +177,27 @@ elCategoriesList.addEventListener("click", (evt) => {
     })
 
     evt.target.parentNode.setAttribute("class", "categories__item categories__item--active");
-    console.log(searchPokemons(inputValue, pokemons, searchedCategory));
-    console.log(inputValue);
-    displayPokemonCards(elSearchResult, searchPokemons(inputValue, pokemons, searchedCategory));
+    globalSearchedPokemons = searchPokemons(inputValue, pokemons, searchedCategory)
+    displayPokemonCards(elSearchResultList, globalSearchedPokemons);
+  }
+})
+
+// bookmark listeners
+
+elSearchResultList.addEventListener("click", (evt) => {
+  evt.preventDefault()
+  if (evt.target.matches(".js-pokemon__bookmark")) {
+    toggleMarkPokemon(pokemons, evt.target, "pokemon__bookmark--active")
+    displayBookmarkPokemonCards(elBookmakredPokemonsList, bookmarkPokemons)
+  }
+})
+
+elBookmakredPokemonsList.addEventListener("click", (evt) => {
+  evt.preventDefault()
+  if (evt.target.matches(".bookmarked-pokemons__item-remove")) {
+    console.log("Bookmark button");
+    toggleMarkPokemon(pokemons, evt.target, "bookmarked-pokemons__item-remove--active")
+    displayBookmarkPokemonCards(elBookmakredPokemonsList, bookmarkPokemons)
+    displayPokemonCards(elSearchResultList, globalSearchedPokemons)
   }
 })

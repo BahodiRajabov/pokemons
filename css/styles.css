@@ -65,19 +65,21 @@ img {
 
 .main{
   display: flex;
-  height: 100vh;
 }
 .sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-right: 20px;
-  padding-left: 20px;
-  max-width: 25%;
-  width: 100%;
+  padding-right: 40px;
+  padding-left: 40px;
+  width: 30%;
   background-color: rgb(252, 252, 252);
   border-right: 2px solid #ddd;
-  box-shadow: 10px 0px 10px #ddd;
-
+  /* box-shadow:inset 0px -10px 40px rgba(0, 0, 0,0.6); */
+  overflow-y: auto;
 }
 .sidebar--empty{
   background-image: url("/img/undraw_No_data_re_kwbl\ \(1\).svg");
@@ -135,17 +137,17 @@ img {
   right: 100%;
   transform: translateY(-50%);
   cursor: pointer;
-  /* background-image: url("/img/arrow-left-solid.svg");
+  background-image: url("/img/arrow-left-solid.svg");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 20px 20px; */
+  background-size: 20px 20px;
   transition: width 0.3s ease;
-}
-.bookmarked-pokemons__item-remove-img{
-  display: block;
 }
 .bookmarked-pokemons__item-remove:hover{
   width: 36px;
+}
+.bookmarked-pokemons__item-remove--active{
+  background-color: red;
 }
 .bookmarked-pokemons__link {
 }
@@ -240,7 +242,6 @@ img {
 }
 
 .left{
-  max-width: 75%;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
@@ -494,6 +495,10 @@ img {
 }
 .pokemon__bookmark:hover{
 }
+.pokemon__bookmark--active{
+  background-image: url("/img/bookmark-full.svg");
+  background-color: rgb(151, 14, 14);
+}
 
 .pokemon__link {
   display: block;
@@ -502,14 +507,6 @@ img {
   background-color: #fff;
   padding: 6px;
   border-radius: 10px;
-  /* background-image: linear-gradient(
-  to bottom,
-  #cf1818 45%,
-  #222 45%,
-  #222 55%,
-  #eee 55%,
-  #eee 100%
-  ); */
 }
 
 .pokemon__img {
@@ -569,6 +566,7 @@ img {
 }
 .pokemon__sizes {
   display: flex;
+  /* justify-content: space-between; */
   align-items: center;
   color: #222;
   font-size: 15px;

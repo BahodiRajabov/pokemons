@@ -12,212 +12,118 @@
 </head>
 
 <body>
-  <div class="container">
-    <main class="main">
-      <div class="sidebar">
-        <div class="sidebar__bottom">
-          <h2 class="sidebar__title">Bookmarked Pokemons</h2>
-          <ul class="sidebar__list bookmarked-pokemons">
-            <li class="bookmarked-pokemons__item">
-              <button class="bookmarked-pokemons__item-remove" type="button" aria-label="remove button">
-                <img class="bookmarked-pokemons__item-remove-img" src="/img/arrow-left-solid.svg"
-                  alt="remove button img" width="20" height="20">
-              </button>
-              <a href="#" class="bookmarked-pokemons__link bookmarked-pokemon">
-                <img class="bookmarked-pokemon__img" src="/img/025.png" alt="Pikachu img" width="86" height="72">
-                <div class="bookmarked-pokemon__details">
-                  <h3 class="bookmarked-pokemon__title">Pickachu</h3>
-                  <div class="bookmarked-pokemon__features-wrapper">
-                    <!-- <p class="bookmarked-pokemon__features-wrapper-title">Features</p> -->
-                    <ul class="bookmarked-pokemon__features">
-                      <li class="bookmarked-pokemon__feature">FIRE</li>
-                      <li class="bookmarked-pokemon__feature">POISON</li>
-                    </ul>
-                  </div>
-                  <div class="bookmarked-pokemon__sizes">
-                    <div class="bookmarked-pokemon__height-wrapper">
-                      <img class="bookmarked-pokemon__height-img" src="/img/resize.svg" alt="ruler logo" width="24"
-                        height="20">
-                      <span class="bookmarked-pokemon__height">1.7m</span>
-                    </div>
-                    <div class="bookmarked-pokemon__weight-wrapper">
-                      <img class="bookmarked-pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24"
-                        height="20">
-                      <span class="bookmarked-pokemon__weight">2kg</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
+  <main class="main">
+    <div class="sidebar">
+      <div class="sidebar__bottom">
+        <h2 class="sidebar__title">Bookmarked Pokemons <span class="result__title-count js-bookmark-count"></span>
+        </h2>
+        <ul class="sidebar__list bookmarked-pokemons js-bookmarked-pokemons">
+        </ul>
+      </div>
+    </div>
+    <div class="left">
+      <header class="header">
+        <nav class="nav">
+          <a class="logo" href="/">
+            <img class="logo__img" src="/img/logo.svg" alt="Pokemon logo" width="140" height="80">
+          </a>
+          <ul class="nav__list">
+            <li class="nav__item nav__item--active ">
+              <a class="nav__link" href="#">Home page</a>
             </li>
-            <li class="bookmarked-pokemons__item">
-              <button class="bookmarked-pokemons__item-remove" type="button" aria-label="remove button">
-                <img class="bookmarked-pokemons__item-remove-img" src="/img/arrow-left-solid.svg"
-                  alt="remove button img" width="20" height="20">
-              </button>
-              <a href="#" class="bookmarked-pokemons__link bookmarked-pokemon">
-                <img class="bookmarked-pokemon__img" src="/img/025.png" alt="Pikachu img" width="86" height="72">
-                <div class="bookmarked-pokemon__details">
-                  <h3 class="bookmarked-pokemon__title">Pickachu</h3>
-                  <div class="bookmarked-pokemon__features-wrapper">
-                    <!-- <p class="bookmarked-pokemon__features-wrapper-title">Features</p> -->
-                    <ul class="bookmarked-pokemon__features">
-                      <li class="bookmarked-pokemon__feature">FIRE</li>
-                      <li class="bookmarked-pokemon__feature">POISON</li>
-                    </ul>
-                  </div>
-                  <div class="bookmarked-pokemon__sizes">
-                    <div class="bookmarked-pokemon__height-wrapper">
-                      <img class="bookmarked-pokemon__height-img" src="/img/resize.svg" alt="ruler logo" width="24"
-                        height="20">
-                      <span class="bookmarked-pokemon__height">1.7m</span>
-                    </div>
-                    <div class="bookmarked-pokemon__weight-wrapper">
-                      <img class="bookmarked-pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24"
-                        height="20">
-                      <span class="bookmarked-pokemon__weight">2kg</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
+            <li class="nav__item">
+              <a class="nav__link" href="#">Connect us</a>
             </li>
-            <li class="bookmarked-pokemons__item">
-              <button class="bookmarked-pokemons__item-remove" type="button" aria-label="remove button">
-                <img class="bookmarked-pokemons__item-remove-img" src="/img/arrow-left-solid.svg"
-                  alt="remove button img" width="20" height="20">
-              </button>
-              <a href="#" class="bookmarked-pokemons__link bookmarked-pokemon">
-                <img class="bookmarked-pokemon__img" src="/img/025.png" alt="Pikachu img" width="86" height="72">
-                <div class="bookmarked-pokemon__details">
-                  <h3 class="bookmarked-pokemon__title">Pickachu</h3>
-                  <div class="bookmarked-pokemon__features-wrapper">
-                    <!-- <p class="bookmarked-pokemon__features-wrapper-title">Features</p> -->
-                    <ul class="bookmarked-pokemon__features">
-                      <li class="bookmarked-pokemon__feature">FIRE</li>
-                      <li class="bookmarked-pokemon__feature">POISON</li>
-                    </ul>
-                  </div>
-                  <div class="bookmarked-pokemon__sizes">
-                    <div class="bookmarked-pokemon__height-wrapper">
-                      <img class="bookmarked-pokemon__height-img" src="/img/resize.svg" alt="ruler logo" width="24"
-                        height="20">
-                      <span class="bookmarked-pokemon__height">1.7m</span>
-                    </div>
-                    <div class="bookmarked-pokemon__weight-wrapper">
-                      <img class="bookmarked-pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24"
-                        height="20">
-                      <span class="bookmarked-pokemon__weight">2kg</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
+          </ul>
+        </nav>
+      </header>
+
+      <section class="search">
+        <div class="search__container">
+          <form action="#" class="search__form js-search__form">
+            <input class="search__input js-search__input" type="text" name="search" id="search-input"
+              placeholder="Search for pokemons" autocomplete="off">
+            <!-- <select class="search__categories-select" name="search-category">
+                <option class="search__categories-option" value="binnima">POSITION</option>
+              </select> -->
+            <button class="search__button " type="submit">
+              <img class="search__button-img" src="/img/search.svg" alt="Search img" width="24" height="24">
+            </button>
+          </form>
+        </div>
+      </section>
+      <section class="categories">
+        <div class="categoires__container">
+          <ul class="categories__list">
+            <li class="categories__item">
+              <a class="categories__link " data-type="all" href="#">All</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--normal" data-type="Normal" href="#">Normal</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--fighting" data-type="Fighting" href="#">Fighting</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--flying" data-type="Flying" href="#">Flying</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--poison" data-type="Poison" href="#">Poison</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--ground" data-type="Ground" href="#">Ground</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--rock" data-type="Rock" href="#">Rock</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--bug" data-type="Bug" href="#">Bug</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--ghost" data-type="Ghost" href="#">Ghost</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--steel" data-type="Steel" href="#">Steel</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--fire" data-type="Fire" href="#">Fire</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--water" data-type="Water" href="#">Water</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--grass" data-type="Grass" href="#">Grass</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--electric" data-type="Electric" href="#">Electric</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--psychic" data-type="Psychic" href="#">Psychic</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--ice" data-type="Ice" href="#">Ice</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--dragon" data-type="dragon" href="#">Dragon</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--dark" data-type="dark" href="#">Dark</a>
+            </li>
+            <li class="categories__item">
+              <a class="categories__link calor--fairy" data-type="fairy" href="#">Fairy</a>
             </li>
           </ul>
         </div>
-      </div>
-      <div class="left">
-        <header class="header">
-          <nav class="nav">
-            <a class="logo" href="/">
-              <img class="logo__img" src="/img/logo.svg" alt="Pokemon logo" width="140" height="80">
-            </a>
-            <ul class="nav__list">
-              <li class="nav__item nav__item--active ">
-                <a class="nav__link" href="#">Home page</a>
-              </li>
-              <li class="nav__item">
-                <a class="nav__link" href="#">Connect us</a>
-              </li>
-            </ul>
-          </nav>
-        </header>
-
-        <section class="search">
-          <div class="search__container">
-            <form action="#" class="search__form js-search__form">
-              <input class="search__input js-search__input" type="text" name="search" id="search-input"
-                placeholder="Search for pokemons" autocomplete="off">
-              <!-- <select class="search__categories-select" name="search-category">
-                <option class="search__categories-option" value="binnima">POSITION</option>
-              </select> -->
-              <button class="search__button " type="submit">
-                <img class="search__button-img" src="/img/search.svg" alt="Search img" width="24" height="24">
-              </button>
-            </form>
-          </div>
-        </section>
-        <section class="categories">
-          <div class="categoires__container">
-            <ul class="categories__list">
-              <li class="categories__item">
-                <a class="categories__link " data-type="all" href="#">All</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--normal" data-type="Normal" href="#">Normal</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--fighting" data-type="Fighting" href="#">Fighting</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--flying" data-type="Flying" href="#">Flying</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--poison" data-type="Poison" href="#">Poison</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--ground" data-type="Ground" href="#">Ground</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--rock" data-type="Rock" href="#">Rock</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--bug" data-type="Bug" href="#">Bug</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--ghost" data-type="Ghost" href="#">Ghost</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--steel" data-type="Steel" href="#">Steel</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--fire" data-type="Fire" href="#">Fire</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--water" data-type="Water" href="#">Water</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--grass" data-type="Grass" href="#">Grass</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--electric" data-type="Electric" href="#">Electric</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--psychic" data-type="Psychic" href="#">Psychic</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--ice" data-type="Ice" href="#">Ice</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--dragon" data-type="dragon" href="#">Dragon</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--dark" data-type="dark" href="#">Dark</a>
-              </li>
-              <li class="categories__item">
-                <a class="categories__link calor--fairy" data-type="fairy" href="#">Fairy</a>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <section class="result">
-          <div class="result__container">
-            <h3 class="result__title">Search result: <span class="result__title-count js-result__title-count"></span>
-            </h3>
-            <ul class="pokemons js-pokemons-result-list"></ul>
-          </div>
-        </section>
-      </div>
-    </main>
-  </div>
+      </section>
+      <section class="result">
+        <div class="result__container">
+          <h3 class="result__title">Search result: <span class="result__title-count js-result__title-count"></span>
+          </h3>
+          <ul class="pokemons js-pokemons-result-list"></ul>
+        </div>
+      </section>
+    </div>
+  </main>
   <!-- <div class="modal modal--open">
     <div class="modal__inner modal-pokemon">
       <img class="modal-pokemon__img" src="/img/025.png" alt="Pikachu img" width="280" height="280">
@@ -257,6 +163,38 @@
             <div class="pokemon__weight-wrapper">
               <img class="pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24" height="20">
               <span class="pokemon__weight js-pokemon__weight">2kg</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+  </template>
+  <template class="js-bookmark-template">
+    <li class="bookmarked-pokemons__item">
+      <button class="bookmarked-pokemons__item-remove js-bookmarked-pokemons__item-remove" type="button"
+        aria-label="remove button">
+      </button>
+      <a href="#" class="bookmarked-pokemons__link bookmarked-pokemon">
+        <img class="bookmarked-pokemon__img js-bookmarked-pokemon__img" src="/img/025.png" alt="Pikachu img" width="86"
+          height="72">
+        <div class="bookmarked-pokemon__details">
+          <h3 class="bookmarked-pokemon__title js-bookmarked-pokemon__title">Pickachu</h3>
+          <div class="bookmarked-pokemon__features-wrapper">
+            <!-- <p class="bookmarked-pokemon__features-wrapper-title">Features</p> -->
+            <ul class="bookmarked-pokemon__features js-bookmarked-pokemon__features">
+              <li class="bookmarked-pokemon__feature">FIRE</li>
+              <li class="bookmarked-pokemon__feature">POISON</li>
+            </ul>
+          </div>
+          <div class="bookmarked-pokemon__sizes">
+            <div class="bookmarked-pokemon__height-wrapper">
+              <img class="bookmarked-pokemon__height-img" src="/img/resize.svg" alt="ruler logo" width="24" height="20">
+              <span class="bookmarked-pokemon__height js-bookmarked-pokemon__height">1.7m</span>
+            </div>
+            <div class="bookmarked-pokemon__weight-wrapper">
+              <img class="bookmarked-pokemon__weight-img" src="/img/weight.svg" alt="weight logo" width="24"
+                height="20">
+              <span class="bookmarked-pokemon__weight js-bookmarked-pokemon__weight">2kg</span>
             </div>
           </div>
         </div>
