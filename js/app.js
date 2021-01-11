@@ -21,6 +21,29 @@ let elTypeList = $_(".categories__list");
 // let elPokemonHeight = $_(".js-pokemon__height");
 // let elPokemonWeight = $_(".js-pokemon__weight");
 
+
+var types = [];
+
+for (var pokemon of pokemons) {
+  for (var type of pokemon.type) {
+    if (!types.includes(type)){
+      types.push(type);
+    };
+  };
+};
+
+let typeFragment = document.createDocumentFragment();
+
+types.map((type) => {
+  var typeItem = elPokemonType.cloneNode(true);
+  typeItem.querySelector(".categories__link").textContent = type;
+  typeItem.querySelector(".categories__link").dataset.type = type.toLowerCase();
+
+  typeFragment.appendChild(typeItem);
+})
+
+elTypeList.appendChild(typeFragment);
+
 // Search form elements
 let elForm = $_(".js-search__form");
 let elFormInput = $_(".js-search__input");
@@ -79,25 +102,3 @@ elFormInput.addEventListener("input", (evt) => {
     elSearchResult.innerHTML = ""
   }
 });
-
-var types = [];
-
-for (var pokemon of pokemons) {
-  for (var type of pokemon.type) {
-    if (!types.includes(type)){
-      types.push(type);
-    };
-  };
-};
-
-let typeFragment = document.createDocumentFragment();
-
-types.map((type) => {
-  var typeItem = elPokemonType.cloneNode(true);
-  typeItem.querySelector(".categories__link").textContent = type;
-  typeItem.querySelector(".categories__link").dataset.type = type.toLowerCase();
-
-  typeFragment.appendChild(typeItem);
-})
-
-elTypeList.appendChild(typeFragment);
