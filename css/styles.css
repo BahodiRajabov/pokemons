@@ -105,8 +105,8 @@ img {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   position: fixed;
-  left: 424px;
-  top: 20px;
+  left: 0;
+  top: 22px;
   z-index: 10;
   cursor: pointer;
   background-image: url("/img/arrow-left-solid.svg");
@@ -123,7 +123,6 @@ img {
   background-image: url("/img/arrow-right-solid.svg");
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  left: 0px;
 }
 
 .sidebar__title{
@@ -639,7 +638,7 @@ img {
   width: 100%;
   height: 100%;
   z-index: 101;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.6);
@@ -651,6 +650,9 @@ img {
   background-color: #fff;
   border-radius: 5px;
   max-width:760px;
+  max-height: 600px;
+  height: 100%;
+  overflow: auto;
   width: 100%;
 }
 .modal-pokemon{
@@ -660,7 +662,95 @@ img {
   display: block;
 
 }
-.evolutions{
+.modal-box{
+  padding: 40px 0;
+  color: #222;
+}
+
+.modal-box__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-box__img-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 250px;
+  background-color: #fffdf6;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.modal-box__pokemon-img{
+  display: block;
+  width: 180px;
+  height: 180px;
+}
+
+.modal-box__pokemon-name{
+  margin: 0;
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.pokemon-modal__id{
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.modal-box__pokemon-info{
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  color: #ece8d9;
+  font-size: 24px;
+}
+
+.modal-box__pokemon-info span{
+  display: block;
+  font-weight: bold;
+}
+
+.pokemon-modal__description{
+  text-align: center;
+}
+
+.modal-box__pokemon-evaluations{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+}
+
+.evaluation__title{
+  font-size: 30px;
+  text-align: center;
+}
+
+.evaluation-img__wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  background-color: #fffdf6;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.pokemon-evaluation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* .evolutions{
   display: flex;
   align-items: center;
   margin-top: 0;
@@ -674,7 +764,7 @@ img {
 }
 .evolutions__item-img{
 
-}
+} */
 /* animations */
 
 @keyframes bookmark-item{
