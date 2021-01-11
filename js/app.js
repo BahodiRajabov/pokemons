@@ -9,6 +9,8 @@
 let elSearchResult = $_(".js-pokemons-result-list");
 let elSearchResultCount = $_(".js-result__title-count");
 let elPokemonTemplate = $_(".js-pokemon-template").content;
+let elPokemonType = $_(".js-type-pokemon-template").content;
+let elTypeList = $_(".categories__list");
 
 
 // let elPokemonBookmarkButton = $_(".js-pokemon__bookmark");
@@ -77,3 +79,25 @@ elFormInput.addEventListener("input", (evt) => {
     elSearchResult.innerHTML = ""
   }
 });
+
+var types = [];
+
+for (var pokemon of pokemons) {
+  for (var type of pokemon.type) {
+    if (!types.includes(type)){
+      types.push(type);
+    };
+  };
+};
+
+let typeFragment = document.createDocumentFragment();
+
+types.map((type) => {
+  var typeItem = elPokemonType.cloneNode(true);
+  typeItem.querySelector(".categories__link").textContent = type;
+  typeItem.querySelector(".categories__link").dataset.type = type.toLowerCase();
+
+  typeFragment.appendChild(typeItem);
+})
+
+elTypeList.appendChild(typeFragment);
