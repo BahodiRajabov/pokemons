@@ -158,6 +158,7 @@ let openSidebar = () => {
     document.body.classList.add("body--sidebar-close")
   }
 }
+openSidebar()
 
 elToggler.addEventListener("click", (evt) => {
   evt.preventDefault()
