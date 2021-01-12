@@ -1,11 +1,16 @@
 
+AOS.init();
 
 
 // // set megin top on tablet and mobile mode
 // document.body.style.marginTop =
 //   document.querySelector(".header").offsetHeight + "px";
+// Top pokemons
+
+let elTopPokemonsList = $_(".js-top-pokemons-list")
 
 //Pokemon classes from DOM
+let elSearchResultSection = $_(".result")
 let elSearchResultList = $_(".js-pokemons-result-list");
 let elSearchResultCount = $_(".js-result__title-count");
 let elPokemonTemplate = $_(".js-pokemon-template").content;
@@ -55,6 +60,10 @@ let removeBookmarkPokemon = (index) => {
   localStorage.setItem("bookmarkPokemons", JSON.stringify(bookmarkPokemons));
   updateBookmarkCaunt()
 }
+
+let showSection = (elSection) => {
+  elSection.classList.remove("section--close")
+}
 let toggleMarkPokemon = (loopArray, bookmarkButton, className) => {
   loopArray.forEach((pokemon) => {
     if (pokemon.id == bookmarkButton.dataset.id) {
@@ -75,6 +84,8 @@ let createCardPokemon = (pokemon) => {
   let elFeatures = $_(".js-pokemon__features", elPokemonTemplateClone);
 
   $_(".js-pokemon__img", elPokemonTemplateClone).src = pokemon.img;
+  // $_(".pokemons__item", elPokemonTemplateClone).dataset.aos = "fade-up";
+  $_(".pokemons__item", elPokemonTemplateClone).dataset.aosAnchorPlacement = "bottom-bottom";
   $_(".js-pokemon__name", elPokemonTemplateClone).textContent = pokemon.name;
   $_(".js-pokemon__height", elPokemonTemplateClone).textContent = pokemon.height;
   $_(".js-pokemon__weight", elPokemonTemplateClone).textContent = pokemon.weight;
@@ -99,6 +110,10 @@ let createBookmarkCardPokemon = (pokemon) => {
   let elFeatures = $_(".js-bookmarked-pokemon__features", elBookmarkPokemonTemplateClone);
 
   $_(".js-bookmarked-pokemon__img", elBookmarkPokemonTemplateClone).src = pokemon.img;
+  // $_(".bookmarked-pokemons__item", elBookmarkPokemonTemplateClone).dataset.aos = "fade-up";
+  // $_(".bookmarked-pokemons__item", elBookmarkPokemonTemplateClone).dataset.aosAnchor = "fade-left";
+  // $_(".bookmarked-pokemons__item", elBookmarkPokemonTemplateClone).dataset.aosDuration = "500";
+  // $_(".bookmarked-pokemons__item", elBookmarkPokemonTemplateClone).dataset.aosOffset = "500";
   $_(".js-bookmarked-pokemon__title", elBookmarkPokemonTemplateClone).textContent = pokemon.name;
   $_(".js-bookmarked-pokemon__height", elBookmarkPokemonTemplateClone).textContent = pokemon.height;
   $_(".js-bookmarked-pokemon__weight", elBookmarkPokemonTemplateClone).dataset.id = pokemon.weight;
@@ -148,6 +163,9 @@ let searchPokemons = (text, pokemonsArray, category = "all") => {
     return pokemon.name.match(textRegex) && matchCategory
   });
 };
+let filterTopPokemons = (pokemonsArray) => {
+  return pokemonsArray.sort((pokemonA, pokemonB) => pokemonB.avgSpawns - pokemonA.avgSpawns)
+}
 
 // toggler
 
@@ -158,7 +176,11 @@ let openSidebar = () => {
     document.body.classList.add("body--sidebar-close")
   }
 }
+
 openSidebar()
+
+let topPokemons = filterTopPokemons(pokemons).slice(0, 49);
+
 
 elToggler.addEventListener("click", (evt) => {
   evt.preventDefault()
@@ -170,12 +192,14 @@ elToggler.addEventListener("click", (evt) => {
 elForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   let inputValue = elFormInput.value;
+  showSection(elSearchResultSection)
   displayPokemonCards(elSearchResultList, searchPokemons(inputValue, pokemons, searchedCategory));
 });
 
 elFormInput.addEventListener("input", (evt) => {
   let inputValue = evt.target.value;
   globalSearchedPokemons = searchPokemons(inputValue, pokemons, searchedCategory);
+  showSection(elSearchResultSection)
   displayPokemonCards(elSearchResultList, globalSearchedPokemons);
 
 });
@@ -191,9 +215,12 @@ elCategoriesList.addEventListener("click", (evt) => {
       a.setAttribute("class", "categories__item")
     })
 
+
     evt.target.parentNode.setAttribute("class", "categories__item categories__item--active");
     globalSearchedPokemons = searchPokemons(inputValue, pokemons, searchedCategory)
+    showSection(elSearchResultSection)
     displayPokemonCards(elSearchResultList, globalSearchedPokemons);
+
   }
 })
 
@@ -214,7 +241,19 @@ elBookmakredPokemonsList.addEventListener("click", (evt) => {
     console.log("Bookmark button");
     toggleMarkPokemon(pokemons, evt.target, "bookmarked-pokemons__item-remove--active")
     displayBookmarkPokemonCards(elBookmakredPokemonsList, bookmarkPokemons)
+    displayPokemonCards(elTopPokemonsList, topPokemons)
     displayPokemonCards(elSearchResultList, globalSearchedPokemons)
+    openSidebar()
+  }
+})
+
+displayPokemonCards(elTopPokemonsList, topPokemons)
+
+elTopPokemonsList.addEventListener("click", (evt) => {
+  evt.preventDefault()
+  if (evt.target.matches(".js-pokemon__bookmark")) {
+    toggleMarkPokemon(pokemons, evt.target, "pokemon__bookmark--active")
+    displayBookmarkPokemonCards(elBookmakredPokemonsList, bookmarkPokemons)
     openSidebar()
   }
 })
