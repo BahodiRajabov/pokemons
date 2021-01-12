@@ -1,5 +1,5 @@
 
-AOS.init();
+// AOS.init();
 
 
 // // set megin top on tablet and mobile mode
