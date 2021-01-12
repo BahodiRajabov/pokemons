@@ -178,7 +178,7 @@ let openSidebar = () => {
 
 openSidebar()
 
-let topPokemons = filterTopPokemons(pokemons).slice(0, 49);
+let topPokemons = filterTopPokemons(pokemons.slice()).slice(0, 49);
 
 
 elToggler.addEventListener("click", (evt) => {
