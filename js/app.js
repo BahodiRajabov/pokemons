@@ -108,7 +108,6 @@ let createCardPokemon = (pokemon) => {
 let createBookmarkCardPokemon = (pokemon) => {
   let elBookmarkPokemonTemplateClone = elBookmarkPokemonTemplate.cloneNode(true);
   let elFeatures = $_(".js-bookmarked-pokemon__features", elBookmarkPokemonTemplateClone);
-
   $_(".js-bookmarked-pokemon__img", elBookmarkPokemonTemplateClone).src = pokemon.img;
   // $_(".bookmarked-pokemons__item", elBookmarkPokemonTemplateClone).dataset.aos = "fade-up";
   // $_(".bookmarked-pokemons__item", elBookmarkPokemonTemplateClone).dataset.aosAnchor = "fade-left";
@@ -160,7 +159,7 @@ let searchPokemons = (text, pokemonsArray, category = "all") => {
   let textRegex = new RegExp(text, "gi");
   return pokemonsArray.filter((pokemon) => {
     let matchCategory = category === "all" || pokemon.type.includes(category);
-    return pokemon.name.match(textRegex) && matchCategory
+    return pokemon.name.match(textRegex) && matchCategory;
   });
 };
 let filterTopPokemons = (pokemonsArray) => {
