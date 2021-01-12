@@ -126,7 +126,7 @@ let createBookmarkCardPokemon = (pokemon) => {
 };
 
 let countOfResult = (pokemonArray) => {
-  elSearchResultCount.textContent = pokemonArray.length === 0 ? "Topilmadi 🙁" : `${pokemonArray.length}`
+  elSearchResultCount.textContent = pokemonArray.length === 0 ? "Topilmadi 🙁" : `${pokemonArray.length} items`
 }
 
 let displayPokemonCards = (elList, arrayPokemons) => {
